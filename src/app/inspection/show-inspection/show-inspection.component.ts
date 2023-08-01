@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InspectionApiService } from 'src/app/inspection-api.service';
+import { IInspections } from 'src/types';
 
 @Component({
   selector: 'app-show-inspection',
@@ -8,7 +9,7 @@ import { InspectionApiService } from 'src/app/inspection-api.service';
   styleUrls: ['./show-inspection.component.css'],
 })
 export class ShowInspectionComponent implements OnInit {
-  inspectionList$!: Observable<any[]>;
+  inspectionList$!: Observable<IInspections[]>;
   inspectionTypesList$!: Observable<any[]>;
   inspectionTypesList: any = [];
 
@@ -26,14 +27,15 @@ export class ShowInspectionComponent implements OnInit {
   // Variables (properties)
   modalTitle:string = '';
   activateAddEditInspectionComponent:boolean = false;
-  inspection:any;
+  inspection:IInspections;
 
   modalAdd() {
     this.inspection = {
       id:0,
-      status:null,
-      comments:null,
-      inspectionTypeId:null
+      status: "",
+      comments: "",
+      inspectionTypeId:0,
+      numberOfRepetitions:0
     }
     this.modalTitle = "Add Inspection";
     this.activateAddEditInspectionComponent = true
