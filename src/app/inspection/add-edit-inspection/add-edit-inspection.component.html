@@ -16,6 +16,10 @@
         <label for="comments" class="form-label">Comments</label>
         <input type="text" class="form-control" [(ngModel)]="comments" name="comments">
     </div>
+    <div class="mb-3">
+        <label for="numberOfRepetitions" class="form-label">Number Of Repetitions</label>
+        <input type="number" class="form-control" [(ngModel)]="numberOfRepetitions" name="numberOfRepetitions">
+    </div>
     <button (click)="addInspection()" *ngIf="inspection.id==0" class="btn btn-primary">
         Add
     </button>

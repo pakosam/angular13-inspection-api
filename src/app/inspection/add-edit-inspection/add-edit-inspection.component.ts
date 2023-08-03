@@ -13,6 +13,7 @@ export class AddEditInspectionComponent implements OnInit {
   inspectionList$!: Observable<any[]>;
   statusList$!: Observable<any[]>;
   inspectionTypesList$!: Observable<any[]>;
+  numberOfRepetitions: any;
 
   constructor(private service:InspectionApiService) { }
 
@@ -27,6 +28,7 @@ export class AddEditInspectionComponent implements OnInit {
     this.status = this.inspection.status;
     this.comments = this.inspection.comments;
     this.inspectionTypeId = this.inspection.inspectionTypeId;
+    this.numberOfRepetitions = this.inspection.numberOfRepetitions;
     this.statusList$ = this.service.getStatusList();
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionTypesList$ = this.service.getInspectionTypesList();
@@ -36,7 +38,8 @@ export class AddEditInspectionComponent implements OnInit {
     var inspection = {
       status:this.status,
       comments:this.comments,
-      inspectionTypeId:this.inspectionTypeId
+      inspectionTypeId:this.inspectionTypeId,
+      numberOfRepetitions:this.numberOfRepetitions
     }
     this.service.addInspection(inspection).subscribe(res => {
       var closeModalBtn = document.getElementById("add-edit-modal-close");
@@ -61,7 +64,8 @@ export class AddEditInspectionComponent implements OnInit {
       id: this.id,
       status:this.status,
       comments:this.comments,
-      inspectionTypeId:this.inspectionTypeId
+      inspectionTypeId:this.inspectionTypeId,
+      numberOfRepetitions:this.numberOfRepetitions
     }
     var id:number = this.id;
     this.service.updateInspection(id, inspection).subscribe(res => {
