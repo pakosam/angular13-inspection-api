@@ -13,7 +13,7 @@ export class AddEditInspectionComponent implements OnInit {
   inspectionList$!: Observable<any[]>;
   statusList$!: Observable<any[]>;
   inspectionTypesList$!: Observable<any[]>;
-  numberOfRepetitions: any;
+  
 
   constructor(private service:InspectionApiService) { }
 
@@ -22,24 +22,28 @@ export class AddEditInspectionComponent implements OnInit {
   status: string = "";
   comments: string = "";
   inspectionTypeId!: number;
-
+  numberOfRepetitions: any;
+  completed: boolean;
+  
   ngOnInit(): void {
     this.id = this.inspection.id;
     this.status = this.inspection.status;
     this.comments = this.inspection.comments;
     this.inspectionTypeId = this.inspection.inspectionTypeId;
     this.numberOfRepetitions = this.inspection.numberOfRepetitions;
+    this.completed = this.inspection.completed;
     this.statusList$ = this.service.getStatusList();
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionTypesList$ = this.service.getInspectionTypesList();
   }
 
   addInspection() {
-    var inspection = {
+    const inspection = {
       status:this.status,
       comments:this.comments,
       inspectionTypeId:this.inspectionTypeId,
-      numberOfRepetitions:this.numberOfRepetitions
+      numberOfRepetitions:this.numberOfRepetitions,
+      completed:this.completed
     }
     this.service.addInspection(inspection).subscribe(res => {
       var closeModalBtn = document.getElementById("add-edit-modal-close");
@@ -65,7 +69,8 @@ export class AddEditInspectionComponent implements OnInit {
       status:this.status,
       comments:this.comments,
       inspectionTypeId:this.inspectionTypeId,
-      numberOfRepetitions:this.numberOfRepetitions
+      numberOfRepetitions:this.numberOfRepetitions,
+      completed:this.completed
     }
     var id:number = this.id;
     this.service.updateInspection(id, inspection).subscribe(res => {

@@ -5,4 +5,5 @@ export interface IInspections {
     inspectionTypeId: number;
     inspectionType?: string | null;
     numberOfRepetitions: number
+    completed: boolean
 }

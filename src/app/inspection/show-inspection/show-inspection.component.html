@@ -17,6 +17,7 @@
         <th>Status</th>
         <th>Comments</th>
         <th>Number Of Repetitions</th>
+        <th>Completed</th>
         <th>Options</th>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td>{{item.status}}</td>
             <td>{{item.comments}}</td>
             <td>{{item.numberOfRepetitions}}</td>
+            <td>{{item.completed ? 'Completed' : 'Not Completed'}}</td>
             <td>
                 <button class="btn btn-outline-primary me-2 mb-1"
                 (click)="modalEdit(item)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"

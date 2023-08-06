@@ -20,6 +20,13 @@
         <label for="numberOfRepetitions" class="form-label">Number Of Repetitions</label>
         <input type="number" class="form-control" [(ngModel)]="numberOfRepetitions" name="numberOfRepetitions">
     </div>
+    <div class="mb-3">
+        <label for="completed" class="form-label">Completed</label>
+        <select class="form-control" name="completed" id="completed" [(ngModel)]="completed">
+            <option [ngValue]="true">Completed</option>
+            <option [ngValue]="false">Not Completed</option>
+        </select>
+    </div>
     <button (click)="addInspection()" *ngIf="inspection.id==0" class="btn btn-primary">
         Add
     </button>

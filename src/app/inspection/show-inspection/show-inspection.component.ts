@@ -35,7 +35,8 @@ export class ShowInspectionComponent implements OnInit {
       status: "",
       comments: "",
       inspectionTypeId:0,
-      numberOfRepetitions:0
+      numberOfRepetitions:0,
+      completed: false
     }
     this.modalTitle = "Add Inspection";
     this.activateAddEditInspectionComponent = true
